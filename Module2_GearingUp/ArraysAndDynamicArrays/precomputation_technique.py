@@ -35,15 +35,26 @@ class PrefixOperation:
         q = int(input())
         while q:
             # prefix sum
-            opr = ar.copy()
+            prefix_sum_arr = ar.copy()
             l, r = map(int, input().strip().split())
             for i in range(1, n):
-                opr[i] += opr[i - 1]
+                prefix_sum_arr[i] += prefix_sum_arr[i - 1]
             if l == 0: # To handle index out of bound exception
-                ps = opr[r]
+                ps = prefix_sum_arr[r]
             else:
-                ps = opr[r] - opr[l - 1]
+                ps = prefix_sum_arr[r] - prefix_sum_arr[l - 1]
             print(f"The prefix sum for elements between {l} and {r} = {ps}")
+
+            # suffix sum
+            suffix_sum_arr = ar.copy()
+            for i in range(n-2, -1, -1):
+                suffix_sum_arr[i] += suffix_sum_arr[i+1]
+            if r == n-1:
+                ss = suffix_sum_arr[l]
+            else:
+                ss = suffix_sum_arr[l] - suffix_sum_arr[r+1]
+            print(f"The suffix sum for elements between {l} and {r} = {ss}")
+
             q -= 1
 
 
