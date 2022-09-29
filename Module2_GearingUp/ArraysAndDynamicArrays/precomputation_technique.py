@@ -62,6 +62,15 @@ class PrefixOperation:
                 prefix_max[i] = max(prefix_max[i-1], ar[i])
             print(f"Prefix Max in the ar {ar} is: {prefix_max[r]}")
 
+            """
+            
+            """
+            suffix_max = ar.copy()
+            suffix_max[n-1] = ar[n-1]
+            for i in range(n-2, -1, -1):
+                suffix_max[i] = max(suffix_max[i+1], ar[i])
+            print(f"Suffix Max in the ar {ar} is: {suffix_max[l]}")
+
             q -= 1
 
 
