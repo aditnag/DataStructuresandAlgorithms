@@ -55,6 +55,13 @@ class PrefixOperation:
                 ss = suffix_sum_arr[l] - suffix_sum_arr[r+1]
             print(f"The suffix sum for elements between {l} and {r} = {ss}")
 
+            # prefix max
+            prefix_max = ar.copy()
+            prefix_max[0] = ar[0]
+            for i in range(1, n):
+                prefix_max[i] = max(prefix_max[i-1], ar[i])
+            print(f"Prefix Max in the ar {ar} is: {prefix_max[r]}")
+
             q -= 1
 
 
