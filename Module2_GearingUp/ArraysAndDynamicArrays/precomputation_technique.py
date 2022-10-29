@@ -39,7 +39,7 @@ class PrefixOperation:
             l, r = map(int, input().strip().split())
             for i in range(1, n):
                 prefix_sum_arr[i] += prefix_sum_arr[i - 1]
-            if l == 0: # To handle index out of bound exception
+            if l == 0:  # To handle index out of bound exception
                 ps = prefix_sum_arr[r]
             else:
                 ps = prefix_sum_arr[r] - prefix_sum_arr[l - 1]
@@ -47,28 +47,28 @@ class PrefixOperation:
 
             # suffix sum
             suffix_sum_arr = ar.copy()
-            for i in range(n-2, -1, -1):
-                suffix_sum_arr[i] += suffix_sum_arr[i+1]
-            if r == n-1:
+            for i in range(n - 2, -1, -1):
+                suffix_sum_arr[i] += suffix_sum_arr[i + 1]
+            if r == n - 1:
                 ss = suffix_sum_arr[l]
             else:
-                ss = suffix_sum_arr[l] - suffix_sum_arr[r+1]
+                ss = suffix_sum_arr[l] - suffix_sum_arr[r + 1]
             print(f"The suffix sum for elements between {l} and {r} = {ss}")
 
             # prefix max
             prefix_max = ar.copy()
             prefix_max[0] = ar[0]
             for i in range(1, n):
-                prefix_max[i] = max(prefix_max[i-1], ar[i])
+                prefix_max[i] = max(prefix_max[i - 1], ar[i])
             print(f"Prefix Max in the ar {ar} is: {prefix_max[r]}")
 
             """
-            
+            suffix max
             """
             suffix_max = ar.copy()
-            suffix_max[n-1] = ar[n-1]
-            for i in range(n-2, -1, -1):
-                suffix_max[i] = max(suffix_max[i+1], ar[i])
+            suffix_max[n - 1] = ar[n - 1]
+            for i in range(n - 2, -1, -1):
+                suffix_max[i] = max(suffix_max[i + 1], ar[i])
             print(f"Suffix Max in the ar {ar} is: {suffix_max[l]}")
 
             q -= 1
