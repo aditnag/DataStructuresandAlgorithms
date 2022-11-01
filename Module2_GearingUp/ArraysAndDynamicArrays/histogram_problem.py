@@ -18,8 +18,6 @@
 # Time complexity: O(N)
 # Space complexity: O(N)
 
-import sys
-
 
 class Histogram:
     def main(self):
