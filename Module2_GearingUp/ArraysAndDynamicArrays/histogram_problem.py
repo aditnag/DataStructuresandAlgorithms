@@ -17,3 +17,34 @@
 #
 # Time complexity: O(N)
 # Space complexity: O(N)
+
+import sys
+
+
+class Histogram:
+    def main(self):
+        print("Enter the total number of buildings")
+        n = int(input())
+        print(f"Enter the heights of the {n} buildings")
+        ar = list(map(int, input().strip().split()))[:n]
+
+        pmax = ar.copy()
+        for i in range(1, n):
+            pmax[i] = max(pmax[i - 1], ar[i])
+
+        smax = ar.copy()
+        for i in range(n - 2, -1, -1):
+            smax[i] = max(smax[i + 1], ar[i])
+
+        # Quantity of water stored over ith building
+        amount = 0
+        for i in range(1, n - 1):
+            deciding_height = min(pmax[i - 1], smax[i + 1])
+            if deciding_height > ar[i]:
+                amount += deciding_height - ar[i]
+
+        print(f"Total quantity of water stored = {amount}")
+
+
+obj = Histogram()
+obj.main()
