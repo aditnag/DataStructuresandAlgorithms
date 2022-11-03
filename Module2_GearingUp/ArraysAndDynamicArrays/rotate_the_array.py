@@ -52,6 +52,9 @@ class ArrayRotation:
         print("Enter the the value of k for each k unit of clockwise rotation")
         k = int(input())
 
+        if k > n:
+            k = k % n
+
         # Reversing the first part ,ie, 0 to n-k-1
         for i in range(0, (n - k) // 2):
             temp = ar[i]
