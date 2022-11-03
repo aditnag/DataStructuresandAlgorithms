@@ -43,4 +43,38 @@
 # Time complexity: O(N)
 # Space complexity: O(1)
 
+class ArrayRotation:
+    def main(self):
+        print("Enter the length of the array")
+        n = int(input())
+        print("Enter the array elements")
+        ar = list(map(int, input().strip().split()))[:n]
+        print("Enter the the value of k for each k unit of clockwise rotation")
+        k = int(input())
 
+        # Reversing the first part ,ie, 0 to n-k-1
+        for i in range(0, (n - k) // 2):
+            temp = ar[i]
+            ar[i] = ar[n - k - 1 - i]
+            ar[n - k - 1 - i] = temp
+
+        # Reversing the second part ,ie, n-k to n-1
+        a = 1
+        for i in range(n - k, n - k + (k // 2)):
+            temp = ar[i]
+            ar[i] = ar[n - a]
+            ar[n - a] = temp
+            a += 1
+
+        # Reversing the whole array
+        for i in range(n // 2):
+            temp = ar[i]
+            ar[i] = ar[n - 1 - i]
+            ar[n - 1 - i] = temp
+
+        for ele in ar:
+            print(ele, end=" ")
+
+
+obj = ArrayRotation()
+obj.main()
