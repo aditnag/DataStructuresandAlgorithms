@@ -19,7 +19,7 @@ class SlidingWindowTechnique:
     def subArraySum(self):
         print("Enter the size of the array and the value of the window size")
         n, k = map(int, input().strip().split())
-        ar = list(map(int, input().strip().split()))
+        ar = list(map(int, input().strip().split()))[:n]
         print(f"Sum of the sub-array of size {k} is:")
         sum = 0
         for i in range(k):
@@ -30,8 +30,13 @@ class SlidingWindowTechnique:
             sum += ar[i]
             sum -= ar[i - k]
 
-        print(sum)
+        return sum
+
+    def frequency(self):
+        print("Enter the size of the array and the value of the window size")
+        n, k = map(int, input().strip().split())
+        ar = list(map(int, input().strip().split()))[:n]
 
 
 obj = SlidingWindowTechnique()
-obj.subArraySum()
+print(obj.subArraySum())

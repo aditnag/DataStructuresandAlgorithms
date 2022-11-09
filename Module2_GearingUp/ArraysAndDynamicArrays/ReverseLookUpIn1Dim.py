@@ -34,7 +34,7 @@ class ReverseLookupIn1Dimenssion:
         print("Enter the size of the array")
         n = int(input())
         print("Enter the array elements")
-        ar = list(map(int, input().strip().split()))
+        ar = list(map(int, input().strip().split()))[:n]
         sum = 0
         for i in range(n):
             sum += ar[i] * (i + 1) * (n - i)
