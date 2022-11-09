@@ -27,3 +27,20 @@
 # Space complexity: O(1)
 #
 # Note: The above method involves integer multiplication and the product may go out of the valid integer range. Therefore, we may have to calculate the modulus of the product each time with some large prime number, for example, 10^9 + 7.
+
+
+class ReverseLookupIn1Dimenssion:
+    def main(self):
+        print("Enter the size of the array")
+        n = int(input())
+        print("Enter the array elements")
+        ar = list(map(int, input().strip().split()))
+        sum = 0
+        for i in range(n):
+            sum += ar[i] * (i + 1) * (n - i)
+
+        return sum
+
+
+obj = ReverseLookupIn1Dimenssion()
+print((obj.main()))
