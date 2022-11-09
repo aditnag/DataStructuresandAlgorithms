@@ -15,3 +15,23 @@
 # Space complexity: O(1)
 
 
+class SlidingWindowTechnique:
+    def main(self):
+        print("Enter the size of the array and the value of the window size")
+        n, k = map(int, input().strip().split())
+        ar = list(map(int, input().strip().split()))
+        print(f"Sum of the sub-array of size {k} is:")
+        sum = 0
+        for i in range(k):
+            sum += ar[i]
+
+        for i in range(k, n):
+            print(sum)
+            sum += ar[i]
+            sum -= ar[i - k]
+
+        print(sum)
+
+
+obj = SlidingWindowTechnique()
+obj.main()
