@@ -16,7 +16,7 @@
 
 
 class SlidingWindowTechnique:
-    def main(self):
+    def subArraySum(self):
         print("Enter the size of the array and the value of the window size")
         n, k = map(int, input().strip().split())
         ar = list(map(int, input().strip().split()))
@@ -34,4 +34,4 @@ class SlidingWindowTechnique:
 
 
 obj = SlidingWindowTechnique()
-obj.main()
+obj.subArraySum()
