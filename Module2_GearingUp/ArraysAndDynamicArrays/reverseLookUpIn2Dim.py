@@ -26,3 +26,26 @@
 # Space complexity: O(1)
 #
 # Note: The above method involves integer multiplication and the product may be out of the valid integer range. Therefore we may have to calculate the modulus of the product each time by some large prime number say, 10^9 + 7.
+
+
+class ReverseLookUpIn2D:
+    def main(self):
+        print("Enter the row and column of the matrix")
+        n, m = map(int, input().strip().split())
+
+        # matrix input
+        print("Enter the matrix elements")
+        matrix = []
+        for i in range(n):
+            matrix.append([int(j) for j in input().split()])
+
+        ans = 0
+        for i in range(n):
+            for j in range(m):
+                ans += matrix[i][j] * (i + 1) * (n - i) * (j + 1) * (m - j)
+
+        return ans
+
+
+obj = ReverseLookUpIn2D()
+print(obj.main())
