@@ -18,41 +18,41 @@ import sys
 
 
 class SlidingWindowTechnique:
-    # def subArraySum(self):
-    #     print("Enter the size of the array and the value of the window size")
-    #     n, k = map(int, input().strip().split())
-    #     ar = list(map(int, input().strip().split()))[:n]
-    #     print(f"Sum of the sub-array of size {k} is:")
-    #     sum = 0
-    #     for i in range(k):
-    #         sum += ar[i]
-    #
-    #     for i in range(k, n):
-    #         print(sum)
-    #         sum += ar[i]
-    #         sum -= ar[i - k]
-    #
-    #     return sum
-    #
-    # def frequency(self):
-    #     print("Enter the size of the array and the value of the window size")
-    #     n, k = map(int, input().strip().split())
-    #     ar = list(map(int, input().strip().split()))[:n]
-    #     print(f"Enter the element whose frequency you want to find in each array of the window size {k}")
-    #     x = int(input())
-    #
-    #     frq = 0
-    #     for i in range(k):
-    #         if ar[i] == x:
-    #             frq += 1
-    #
-    #     for i in range(k, n):
-    #         print(frq)
-    #         if ar[i] == x:
-    #             frq += 1
-    #         if ar[i - k] == x:
-    #             frq -= 1
-    #     return frq
+    def subArraySum(self):
+        print("Enter the size of the array and the value of the window size")
+        n, k = map(int, input().strip().split())
+        ar = list(map(int, input().strip().split()))[:n]
+        print(f"Sum of the sub-array of size {k} is:")
+        sum = 0
+        for i in range(k):
+            sum += ar[i]
+
+        for i in range(k, n):
+            print(sum)
+            sum += ar[i]
+            sum -= ar[i - k]
+
+        return sum
+
+    def frequency(self):
+        print("Enter the size of the array and the value of the window size")
+        n, k = map(int, input().strip().split())
+        ar = list(map(int, input().strip().split()))[:n]
+        print(f"Enter the element whose frequency you want to find in each array of the window size {k}")
+        x = int(input())
+
+        frq = 0
+        for i in range(k):
+            if ar[i] == x:
+                frq += 1
+
+        for i in range(k, n):
+            print(frq)
+            if ar[i] == x:
+                frq += 1
+            if ar[i - k] == x:
+                frq -= 1
+        return frq
 
     # To find the minimum number of swaps to bring all the elements <= k together
     def swaps(self):
@@ -83,6 +83,6 @@ class SlidingWindowTechnique:
 
 
 obj = SlidingWindowTechnique()
-# print(obj.subArraySum())
-# print(obj.frequency())
+print(obj.subArraySum())
+print(obj.frequency())
 print(obj.swaps())
