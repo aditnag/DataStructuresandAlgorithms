@@ -76,7 +76,7 @@ class SlidingWindowTechnique:
             ans = min(ans, countLegalElements - max_count)
             if ar[i] <= k:
                 max_count += 1
-            if ar[i-countLegalElements] == k:
+            if ar[i-countLegalElements] <= k:
                 max_count -= 1
 
         return ans
