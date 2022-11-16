@@ -28,11 +28,6 @@
 # Note: Please check the boundary conditions to ensure that the array indices are non-negative.
 
 class ProcessingQueriesEfficiently:
-    def precomputation(self, mat, temp, n, m):
-        for i in range(m):
-            temp[]
-
-
     def main(self):
         print("Enter the row and column of the matrix")
         n, m = map(int, input().strip().split())
@@ -40,9 +35,47 @@ class ProcessingQueriesEfficiently:
         print("Enter the number of Queries to be performed")
         q = int(input())
 
+        # Query input
+        qar = []
+        print("Enter i1, j1, i2, j2")
+        for i in range(q):
+            qar.append([int(j) for j in input().split()])
+
         # matrix input
         print("Enter the matrix elements")
         matrix = []
         for i in range(n):
             matrix.append([int(j) for j in input().split()])
 
+        # row sum
+        for i in range(n):
+            for j in range(1, m):
+                matrix[i][j] += matrix[i][j - 1]
+
+        # column sum
+        for i in range(m):
+            for j in range(1, n):
+                matrix[j][i] += matrix[j - 1][i]
+
+        for i in range(len(qar)):
+            i1 = qar[i][0]
+            j1 = qar[i][1]
+            i2 = qar[i][2]
+            j2 = qar[i][3]
+
+            # ans  = matrix[i2][j2] - matrix[i2][j1 - 1] - matrix[i1 - 1][j2] + matrix[i1 - 1][j1 - 1]
+            ans = matrix[i2][j2]
+            if j1 - 1 >= 0:
+                ans -= matrix[i2][j1 - 1]
+
+            if i1 - 1 >= 0:
+                ans -= matrix[i1 - 1][j2]
+
+            if i1 - 1 >= 0 and j1 - 1 >= 0:
+                ans += matrix[i1 - 1][j1 - 1]
+
+            print(ans)
+
+
+obj = ProcessingQueriesEfficiently()
+obj.main()
