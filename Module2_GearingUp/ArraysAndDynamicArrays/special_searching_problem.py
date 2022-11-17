@@ -21,3 +21,32 @@
 # Space complexity: O(1)
 #
 # Note: We can not start the traversal from Top Left(TL) or Bottom Right(BR) cell because their neighbouring elements are either greater or smaller to them, therefore we do not get any clue on which direction we should move next.
+
+class SpecialSearchingProblem:
+    def main(self):
+        print("Enter the rows and columns")
+        m, n = map(int, input().strip().split())
+
+        print("Enter the matrix elements such that each row is sorted in asc and each column is sorted in asc order!")
+        matrix = []
+        for i in range(m):
+            matrix.append([int(j) for j in input().split()])
+
+        print("Enter the key to be searched")
+        key = int(input())
+
+        i = 0
+        j = n - 1
+        while i < m and j >= 0:
+            if key == matrix[i][j]:
+                print(f"{key} is present")
+                break
+            elif key > matrix[i][j]:
+                i += 1
+            else:
+                j -= 1
+
+
+obj = SpecialSearchingProblem()
+
+obj.main()
