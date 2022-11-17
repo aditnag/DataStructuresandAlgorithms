@@ -1,7 +1,10 @@
 # Lecture 12: A Special Searching Problem
 # In this lecture, we will discuss a special type of searching problem. Here, we have been given a 2d matrix Arr[M][N] with sorted rows & columns along with a key ‘k’. We have to return the coordinates of the key if it is present in the matrix otherwise return (-1, -1).
 #
-#
+# 10 20 30 40
+# 15 25 35 45
+# 27 29 37 48
+# 32 33 39 50
 # Approach:
 #
 # Brute Force - Traverse the matrix to search for the key ‘k’ and return its coordinates if present otherwise returns (-1,-1).
