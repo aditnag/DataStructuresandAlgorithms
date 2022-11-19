@@ -41,3 +41,5 @@ class RangeSumQuery2DImmutable:
 
 obj = RangeSumQuery2DImmutable()
 obj.main()
+
+
