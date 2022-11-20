@@ -37,3 +37,64 @@
 # Note: In the above equation, 'gap' can not be zero (0/0 division), therefore take care of test cases containing all elements as equal.
 #
 # Iterate on maxArr & minArr to calculate the difference between the maximum & minimum elements from the consecutive buckets.
+
+import sys
+
+
+class Bucket:
+    def main(self):
+        print("Enter the length of the array ar")
+        n = int(input())
+
+        # edge case 1: if elements < 2: return 0
+        if n < 2:
+            return 0
+
+        print("Enter the array elements")
+        ar = list(map(int, input().strip().split()))[:n]
+
+        # find the min and max values from the array
+        min_no = sys.maxsize
+        max_no = -sys.maxsize
+        for i in range(n):
+            min_no = min(min_no, ar[i])
+            max_no = max(max_no, ar[i])
+
+        # edge case 2: If min_no == max_no => all elements are equal
+        if min_no == max_no:
+            return 0
+
+        gap = (max_no - min_no) // (n - 1)
+        if (max_no - min_no) % (n - 1) != 0:
+            gap += 1
+
+        # initialising array min and array max to corresponding max and min values.
+        ar_min = []
+        ar_max = []
+        for i in range(n):
+            ar_min[i] = sys.maxsize
+            ar_max[i] = -sys.maxsize
+
+        # based on the bucket, fill the ar_min and ar_max
+        for i in range(n):
+            bucket = (ar[i] - min_no) // 10
+            ar_min[bucket] = min(ar_min[bucket], ar[i])
+            ar_max[bucket] = max(ar_max[bucket], ar[i])
+
+        # final logic
+        ans = -sys.maxsize
+        prev = -sys.maxsize
+        for i in range(n):
+            if ar[i] == -sys.maxsize:
+                continue
+            if prev == -sys.maxsize:
+                prev = ar_max[i]
+            else:
+                ans = max(ans, ar_min[i] - prev)
+                prev = ar_max[i]
+
+        return ans
+
+
+obj = Bucket()
+obj.main()
