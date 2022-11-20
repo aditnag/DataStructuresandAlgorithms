@@ -26,6 +26,7 @@ class MinimumSwapstobringTogether:
                     max_count -= 1
                 if arr[i] <= k:
                     max_count += 1
+            ans = min(ans, countLegatElements - max_count)
 
             print(ans)
 
