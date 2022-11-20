@@ -38,7 +38,7 @@
 #
 # Iterate on maxArr & minArr to calculate the difference between the maximum & minimum elements from the consecutive buckets.
 
-import sys
+from math import inf
 
 
 class Bucket:
@@ -54,8 +54,8 @@ class Bucket:
         ar = list(map(int, input().strip().split()))[:n]
 
         # find the min and max values from the array
-        min_no = sys.maxsize
-        max_no = -sys.maxsize
+        min_no = ar[0]
+        max_no = ar[0]
         for i in range(n):
             min_no = min(min_no, ar[i])
             max_no = max(max_no, ar[i])
@@ -69,25 +69,22 @@ class Bucket:
             gap += 1
 
         # initialising array min and array max to corresponding max and min values.
-        ar_min = []
-        ar_max = []
-        for i in range(n):
-            ar_min[i] = sys.maxsize
-            ar_max[i] = -sys.maxsize
+        ar_min = [inf] * n
+        ar_max = [-inf] * n
 
         # based on the bucket, fill the ar_min and ar_max
         for i in range(n):
-            bucket = (ar[i] - min_no) // 10
+            bucket = (ar[i] - min_no) // gap
             ar_min[bucket] = min(ar_min[bucket], ar[i])
             ar_max[bucket] = max(ar_max[bucket], ar[i])
 
         # final logic
-        ans = -sys.maxsize
-        prev = -sys.maxsize
+        ans = -inf
+        prev = -inf
         for i in range(n):
-            if ar[i] == -sys.maxsize:
+            if ar_min[i] == inf:
                 continue
-            if prev == -sys.maxsize:
+            if prev == -inf:
                 prev = ar_max[i]
             else:
                 ans = max(ans, ar_min[i] - prev)
@@ -97,4 +94,4 @@ class Bucket:
 
 
 obj = Bucket()
-obj.main()
+print(obj.main())
