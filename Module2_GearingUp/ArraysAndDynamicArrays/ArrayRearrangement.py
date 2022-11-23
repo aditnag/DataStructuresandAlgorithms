@@ -21,3 +21,30 @@
 #
 # Time complexity: O(N)
 # Space complexity: O(1)
+
+class ArrayRearrangement:
+    def main(self):
+        print("Enter the length of the array")
+        n = int(input())
+        print("Enter the array elements")
+        ar = list(map(int, input().strip().split()))[:n]
+        for i in range(n):
+            if ar[i] >= 0:
+                index = ar[i]
+                value = i
+                while index != i:
+                    temp = ar[index]
+                    ar[index] = -(value + 1)
+                    value = index
+                    index = temp
+                ar[index] = -(value + 1)
+
+        for i in range(n):
+            ar[i] = (-1 * ar[i]) - 1
+
+        for ele in ar:
+            print(ele, end=" ")
+
+
+obj = ArrayRearrangement()
+obj.main()
