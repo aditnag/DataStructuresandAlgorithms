@@ -3,19 +3,20 @@ from math import inf
 
 
 class OptimizedTime:
-    def prefixmax(self, arr: list, a: int):
-        maxnum = -inf
-        maxarr = arr.copy()
+    def suffixmax(self, arr: list, a: int):
+        for i in range(len(arr) - 2, a - 1, -1):
+            arr[i] = max(arr[i + 1], arr[i])
+
         for i in range(a, len(arr)):
-            maxnum = max(maxnum, maxarr[i])
-        return maxnum
+            return arr[i]
 
     def main(self):
         n = int(input())
         ar = list(map(int, input().strip().split()))[:n]
-        ans = ar[1] - ar[0]
+        smax = ar.copy()
+        ans = -inf
         for i in range(n - 1):
-            ans = max(ans, self.prefixmax(ar, i + 1) - ar[i])
+            ans = max(ans, self.suffixmax(smax, i + 1) - ar[i])
 
         if ans <= 0:
             return 0
