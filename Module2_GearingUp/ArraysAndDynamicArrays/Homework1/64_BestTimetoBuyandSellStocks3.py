@@ -12,6 +12,7 @@ class Market:
         return profit2
 
 
-prices = list(map(int, input().strip().split()))
+n = int(input())
+prices = list(map(int, input().strip().split()))[:n]
 obj = Market()
 print(obj.main(prices))
