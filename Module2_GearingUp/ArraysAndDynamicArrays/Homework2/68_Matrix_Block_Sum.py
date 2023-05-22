@@ -13,7 +13,7 @@ class MatrixBlockSum:
         return mat
 
     def find_sum(self, mat, r, c, k):
-        ans = [[0 for x in range(n)] for y in range(m)]
+        ans = [[0 for _ in range(n)] for _ in range(m)]
         rcs = self.row_col_sum(mat, m, n)
         for i in range(r):
             r1 = max(0, i - k)
