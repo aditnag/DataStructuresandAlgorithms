@@ -18,8 +18,8 @@ class EquallyDistributedGroups:
             else:
                 dic[ar[i]] += 1
         value_list = list(dic.values())
-        if len(value_list) == 1 and value_list[0] >= 2:
-            print("true")
+        if len(value_list) == 1 and value_list[0] < 2:
+            print("false")
         else:
             hcf = self.gcd(value_list[0], value_list[1])
             for i in range(2, len(value_list)):
