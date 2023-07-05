@@ -12,12 +12,20 @@ class Display:
         print(n)
         self.func_reverse(n - 1)
 
+    def func_reverse_straight(self, n):
+        if n < 1:
+            return 0
+        self.func_reverse_straight(n - 1)
+        print(n)
+
     def main(self):
         n = int(input())
         i = 1
         self.func(i, n)
         print()
         self.func_reverse(n)
+        print()
+        self.func_reverse_straight(n)
 
 
 obj = Display()
