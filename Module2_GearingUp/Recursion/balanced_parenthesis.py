@@ -14,15 +14,18 @@ class Parenthesis:
         if l == r:
             s.append("(")
             self.balanced_parenthesis(n, l + 1, r, s, idx + 1)
-        elif l > r:
-            if l == n:
-                s.append(")")
-                self.balanced_parenthesis(n, l, r + 1, s, idx + 1)
+            s.pop()
+        elif l > r and l == n:
+            s.append(")")
+            self.balanced_parenthesis(n, l, r + 1, s, idx + 1)
+            s.pop()
         else:
             s.append("(")
             self.balanced_parenthesis(n, l + 1, r, s, idx + 1)
+            s.pop()
             s.append(")")
             self.balanced_parenthesis(n, l, r + 1, s, idx + 1)
+            s.pop()
 
     def main(self):
         n = int(input())
