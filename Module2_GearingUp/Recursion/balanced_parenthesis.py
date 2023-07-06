@@ -9,26 +9,24 @@
 class Parenthesis:
     def balanced_parenthesis(self, n, l, r, s, idx):
         if l + r == 2 * n:
-            print(s)
+            print("".join(s))
             return
         if l == r:
-            s[idx] = "("
+            s.append("(")
             self.balanced_parenthesis(n, l + 1, r, s, idx + 1)
         elif l > r:
             if l == n:
-                s[idx] = ")"
+                s.append(")")
                 self.balanced_parenthesis(n, l, r + 1, s, idx + 1)
         else:
-            s[idx] = "("
+            s.append("(")
             self.balanced_parenthesis(n, l + 1, r, s, idx + 1)
-            s[idx] = ")"
+            s.append(")")
             self.balanced_parenthesis(n, l, r + 1, s, idx + 1)
 
     def main(self):
         n = int(input())
-        # s = list(map(str, input().strip().split()))[:2 * n]
-        s = ""
-        s = list(s)
+        s = []
         l = r = idx = 0  # l and r are count of left and right braces
         self.balanced_parenthesis(n, l, r, s, idx)
 
