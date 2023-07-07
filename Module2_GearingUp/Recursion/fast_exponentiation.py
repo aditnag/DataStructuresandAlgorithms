@@ -1,3 +1,8 @@
+# T.C = O(log K)
+#            2
+# S.C = O(log K)
+#            2
+
 class FastExponentiation:
     def fastexp(self, n: int, k: int):
         if k == 0:
