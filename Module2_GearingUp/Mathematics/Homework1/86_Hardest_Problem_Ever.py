@@ -2,6 +2,8 @@
 
 class HardestProblemEver:
     def Divisors(self, subsequence):
+        if not subsequence:  # Check if the list is empty
+            return 0
         count = [0] * (max(subsequence) + 1)
         for i in range(len(subsequence)):
             number = subsequence[i]
@@ -23,6 +25,17 @@ class HardestProblemEver:
                 subsequence = ar[j:i + 1]
                 result |= self.Divisors(subsequence)
         return result
+
+    # def solve(self, ar):
+    #     result = 0
+    #     n = len(ar)
+    #     for i in range(n):
+    #         subsequence = [ar[i]]
+    #         result |= self.Divisors(subsequence)
+    #         for j in range(i + 1, n):
+    #             subsequence.append(ar[j])
+    #             result |= self.Divisors(subsequence)
+    #     return result
 
 
 if __name__ == '__main__':

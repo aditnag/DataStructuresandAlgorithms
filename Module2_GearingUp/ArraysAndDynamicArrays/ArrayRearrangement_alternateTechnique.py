@@ -29,7 +29,7 @@ class ArrayRearrangementAT:
         print("Enter the array elements")
         ar = list(map(int, input().strip().split()))[:n]
 
-        """"
+        """
         To do: if ar[i] = j then ar[j] = i. 
         For this the elements should be permutation of n (size of the array) and less than n
         """
