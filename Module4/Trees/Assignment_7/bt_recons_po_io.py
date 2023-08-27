@@ -34,6 +34,7 @@ class Solution:
         root.right = self.build(i1 + i - i2 + 1, j1, i + 1, j2)
 
         return root
+
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         self.preorder = preorder
         self.inorder = inorder
