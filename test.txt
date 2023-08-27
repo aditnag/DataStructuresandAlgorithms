@@ -1,46 +1,62 @@
-Permutation In a String
+Create a new contact
+@app.route('/create_contact', methods=['POST'])
+def create_contact():
+    data = request.json
+    new_contact = Contact(
+        phoneNumber=data['phoneNumber'],
+        email=data['email'],
+        linkedId=data.get('linkedId'),
+        linkPrecedence=data['linkPrecedence']
+    )
 
-Given two strings s1 and s2, print True if s2 contains a permutation of s1, or False otherwise.
+    db.session.add(new_contact)
+    db.session.commit()
 
-In other words, print True if one of s1’s permutations is the substring of s2.
+    return jsonify({'message': 'Contact created successfully'})
 
-Input Format
 
-First-line will contain T,number of test cases.
-Then Each test case contains string s1 and string s2.
-Output Format
+# Retrieve all contacts
+@app.route('/get_contacts', methods=['GET'])
+def get_contacts():
+    contacts = Contact.query.all()
 
-For each test case, print True if s2 contains a permutation of s1 or False otherwise.
-Sample Input 1
+    contact_list = [
+        {
+            'id': contact.id,
+            'phoneNumber': contact.phoneNumber,
+            'email': contact.email,
+            'linkedId': contact.linkedId,
+            'linkPrecedence': contact.linkPrecedence
+        }
+        for contact in contacts
+    ]
+    return jsonify(contact_list)
 
-2
-ab
-eidbaooo
-ab
-eidboaoo
-Sample Output 1
 
-True
-False
-Explanation
+# Update a contact
+@app.route('/update_contact/<int:contact_id>', methods=['PUT'])
+def update_contact(contact_id):
+    data = request.json
 
-For s1=ab and s2=eidbaooo,s2 contains one permutation of s1 ("ba").
+    contact = Contact.query.get(contact_id)
+    if contact:
+        contact.phoneNumber = data['phoneNumber']
+        contact.email = data['email']
+        contact.linkedId = data.get('linkedId')
+        contact.linkPrecedence = data['linkPrecedence']
+        db.session.commit()
+        return jsonify({'message': 'Contact updated successfully'})
+    else:
+        return jsonify({'message': 'Contact not found'})
 
-Constraints
 
-1≤T≤10
-1≤s1.length,s2.length≤10^5
-s1 and s2 consists of lowercase English letters.
-1≤k≤s.length
-
-Example
-Input
-2
-ab
-eidbaooo
-ab
-eidboaoo
-Output
-True
-False
-
+# Delete a contact
+@app.route('/delete_contact/<int:contact_id>', methods=['DELETE'])
+def delete_contact(contact_id):
+    contact = Contact.query.get(contact_id)
+    if contact:
+        db.session.delete(contact)
+        db.session.commit()
+        return jsonify({'message': 'Contact deleted successfully'})
+    else:
+        return jsonify({'message': 'Contact not found'})
