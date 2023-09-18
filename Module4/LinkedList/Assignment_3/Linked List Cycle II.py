@@ -7,6 +7,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = head
