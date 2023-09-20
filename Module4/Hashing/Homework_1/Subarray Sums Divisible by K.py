@@ -4,8 +4,7 @@ from typing import List
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         psum = 0
-        mp = {}
-        mp[0] = 1
+        mp = {0: 1}
         count = 0
         for i in range(len(nums)):
             psum += nums[i]
