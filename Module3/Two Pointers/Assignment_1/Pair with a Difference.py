@@ -12,6 +12,8 @@ def pairDiff(nums, k):
             j += 1
         else:
             i += 1
+        if i == j:
+            j += 1
 
 
 n, k = map(int, input().split())
