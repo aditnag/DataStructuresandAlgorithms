@@ -17,3 +17,17 @@ class Solution:
         self.backtrack(idx, nums, ans)
         ans.sort()
         return ans[k - 1]
+
+# Logic of right rotate will be like this :
+#
+# def rotateRight(S, i, j):
+#
+#     temp = S[j]
+#
+#     for k in range(j, i, -1):
+#
+#         S[k] = S[k - 1]
+#
+#     S[i] = temp
+#
+#     return S
